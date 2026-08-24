@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: parth_production
-  username: parth
+  database: rails_render_demo_22ey
+  username: rails_render_demo_22ey_user
   password: <%= ENV["PARTH_DATABASE_PASSWORD"] %>
