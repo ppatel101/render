@@ -1,0 +1,15 @@
+<% content_for :title, "New User" %>
+
+<div class="page-header">
+  <div>
+    <h1 class="page-title">Create New User</h1>
+    <p class="page-subtitle">Add a new user record to the database</p>
+  </div>
+  <div>
+    <%= link_to "&larr; Back to Users".html_safe, users_path, class: "btn btn-secondary" %>
+  </div>
+</div>
+
+<div class="card">
+  <%= render "form", user: @user %>
+</div>

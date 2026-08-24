@@ -1,0 +1,33 @@
+<%= form_with(model: user, class: "user-form") do |form| %>
+  <% if user.errors.any? %>
+    <div class="error-summary">
+      <h3><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h3>
+      <ul>
+        <% user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control", placeholder: "e.g. Jane Doe", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :email, class: "form-label" %>
+    <%= form.email_field :email, class: "form-control", placeholder: "e.g. jane@example.com", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :age, "Age (optional)", class: "form-label" %>
+    <%= form.number_field :age, class: "form-control", placeholder: "e.g. 28", min: 1, step: 1 %>
+    <div class="form-text">Must be a positive integer if provided.</div>
+  </div>
+
+  <div class="form-actions">
+    <%= form.submit(user.persisted? ? "Update User" : "Create User", class: "btn btn-primary") %>
+    <%= link_to "Cancel", user.persisted? ? user_path(user) : users_path, class: "btn btn-secondary" %>
+  </div>
+<% end %>

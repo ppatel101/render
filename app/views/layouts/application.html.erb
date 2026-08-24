@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%= content_for(:title) ? "#{yield(:title)} - User Management" : "User Management Application" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <header class="navbar">
+      <div class="navbar-container">
+        <%= link_to root_path, class: "navbar-brand" do %>
+          <span>User</span>Management
+        <% end %>
+        <nav>
+          <ul class="navbar-nav">
+            <li><%= link_to "All Users", users_path, class: "nav-link" %></li>
+            <li><%= link_to "+ New User", new_user_path, class: "btn btn-primary btn-sm" %></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <% if notice.present? %>
+        <div class="flash-messages">
+          <div class="flash flash-notice"><%= notice %></div>
+        </div>
+      <% end %>
+
+      <% if alert.present? %>
+        <div class="flash-messages">
+          <div class="flash flash-alert"><%= alert %></div>
+        </div>
+      <% end %>
+
+      <%= yield %>
+    </main>
+
+    <footer class="footer">
+      <p>User Management CRUD Application &bull; Built with Ruby <%= RUBY_VERSION %> &amp; Rails <%= Rails.version %> &bull; PostgreSQL</p>
+    </footer>
+  </body>
+</html>
+

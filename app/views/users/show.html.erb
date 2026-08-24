@@ -1,0 +1,42 @@
+<% content_for :title, @user.name %>
+
+<div class="page-header">
+  <div>
+    <h1 class="page-title"><%= @user.name %></h1>
+    <p class="page-subtitle">User Profile &amp; Account Details</p>
+  </div>
+  <div class="table-actions">
+    <%= link_to "Edit User", edit_user_path(@user), class: "btn btn-primary" %>
+    <%= button_to "Delete User", user_path(@user), method: :delete, data: { turbo_confirm: "Are you sure you want to delete #{@user.name}?" }, class: "btn btn-danger" %>
+    <%= link_to "&larr; Back to Users".html_safe, users_path, class: "btn btn-secondary" %>
+  </div>
+</div>
+
+<div class="card">
+  <div class="detail-grid">
+    <div class="detail-item">
+      <div class="detail-label">User ID</div>
+      <div class="detail-value">#<%= @user.id %></div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Full Name</div>
+      <div class="detail-value"><%= @user.name %></div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Email Address</div>
+      <div class="detail-value"><%= @user.email %></div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Age</div>
+      <div class="detail-value"><%= @user.age.present? ? "#{@user.age} years old" : "Not specified" %></div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Created At</div>
+      <div class="detail-value"><%= @user.created_at.strftime("%B %d, %Y at %I:%M %p") %></div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Last Updated</div>
+      <div class="detail-value"><%= @user.updated_at.strftime("%B %d, %Y at %I:%M %p") %></div>
+    </div>
+  </div>
+</div>

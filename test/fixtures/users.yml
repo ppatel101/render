@@ -1,0 +1,9 @@
+one:
+  name: Alice Smith
+  email: alice@example.com
+  age: 28
+
+two:
+  name: Bob Jones
+  email: bob@example.com
+  age: 34
